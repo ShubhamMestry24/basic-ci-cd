@@ -25,12 +25,12 @@ pipeline{
         
         stage('Build and Push Docker Image'){
             enviornment{
-                DOCKER_IMAGE = "abhishekf5/ultimate-cicd:${BUILD_NUMBER}"
+                DOCKER_IMAGE = "iamshubham24/ultimate-cicd:${BUILD_NUMBER}"
                 // DOCKERFILE_LOCATION = "java-maven-sonar-argocd-helm-k8s/spring-boot-app/Dockerfile"
                 REGISTRY_CREDENTIALS = credentials('docker-cred')
             }
             
-            setps{
+            steps{
                 script{
                     sh 'cd spring-boot-app && docker build -t ${DOCKER_IMAGE} .'
                     def dockerImage = docker.image("${DOCKER_IMAGE}")
@@ -42,7 +42,7 @@ pipeline{
         
         stage('Update Deployment File'){
             environment{
-                GIT_REPO_NAME = ""
+                GIT_REPO_NAME = "basic-ci-cd"
                 GIT_USER_NAME = "ShubhamMestry24"
             }
             
