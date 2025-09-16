@@ -9,7 +9,7 @@ pipeline{
     
     stages{
         
-        stage('clean workspace'){
+        /*stage('clean workspace'){
             steps{
                 cleanWs()
                 echo 'workspace cleaned'
@@ -19,7 +19,7 @@ pipeline{
                 sh 'java -version'
                 sh 'git --version'
             }
-        }
+        }*/
         
         stage('checkout'){
             steps{
