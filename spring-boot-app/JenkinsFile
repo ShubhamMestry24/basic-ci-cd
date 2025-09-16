@@ -20,12 +20,12 @@ pipeline{
             }
         }*/
 
-        stage('clean workspace'){
+        /*stage('clean workspace'){
             steps{
                 cleanWs()
                 echo 'workspace cleaned'
             }
-        }
+        }*/
 
         stage('checkout'){
             steps{
