@@ -9,19 +9,19 @@ pipeline{
 
     stages{
 
-        stage('fix permission'){
+        /*stage('fix permission'){
             steps{
                 sh 'sudo chown -R jenkins:jenkins $WORKSPACE'
                 sh 'chmod -R 755 $WORKSPACE'
             }
         }
-        
+
         stage('clean workspace'){
             steps{
                 cleanWs()
                 echo 'workspace cleaned'
             }
-        }
+        }*/
         
         stage('checkout'){
             steps{
