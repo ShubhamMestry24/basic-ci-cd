@@ -18,7 +18,7 @@ pipeline{
                 sh 'sudo chown -R jenkins:jenkins $WORKSPACE'
                 sh 'chmod -R 755 $WORKSPACE'
             }
-        }
+        }*/
 
         stage('clean workspace'){
             steps{
