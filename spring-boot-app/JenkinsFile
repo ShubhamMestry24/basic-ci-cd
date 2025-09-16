@@ -83,7 +83,7 @@ pipeline{
                         echo "Current build number: ${BUILD_NUMBER}"
 
                         # Replace image tag in deployment YAML
-                        sed -i "s/image: iamshubham24\/ultimate-cicd:.*/image: iamshubham24\/ultimate-cicd:${BUILD_NUMBER}/g" spring-boot-app-manifests/deployment.yml
+                        sed -i "s/image: iamshubham24/ultimate-cicd:.*|image: iamshubham24/ultimate-cicd:${BUILD_NUMBER}|g" spring-boot-app-manifests/deployment.yml
 
                         # Verify sed worked
                         cat spring-boot-app-manifests/deployment.yml
