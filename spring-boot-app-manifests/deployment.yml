@@ -18,4 +18,4 @@ spec:
       - name: spring-boot-app
         image: iamshubham24/ultimate-cicd:37
         ports:
-        - containerPort: 8080
+        - containerPort: 8000
