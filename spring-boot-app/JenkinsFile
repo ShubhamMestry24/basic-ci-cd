@@ -6,20 +6,22 @@ pipeline{
             args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
         }
     }
-    
+
     stages{
+
+        stage('fix permission'){
+            steps{
+                sh 'sudo chown -R jenkins:jenkins $WORKSPACE'
+                sh 'chmod -R 755 $WORKSPACE'
+            }
+        }
         
-        /*stage('clean workspace'){
+        stage('clean workspace'){
             steps{
                 cleanWs()
                 echo 'workspace cleaned'
-                sh "whoami"
-                sh 'docker --version'
-                sh 'mvn --version'
-                sh 'java -version'
-                sh 'git --version'
             }
-        }*/
+        }
         
         stage('checkout'){
             steps{
