@@ -6,6 +6,10 @@ pipeline{
             args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
         }
     }
+    
+    options{
+        skipDefaultCheckout(true) // avoid Jenkins doing implicit checkout
+    }
 
     stages{
 
@@ -23,11 +27,6 @@ pipeline{
             }
         }*/
 
-        options {
-            skipDefaultCheckout(true)
-        }
-        
-        
         stage('checkout'){
             steps{
                 echo 'checkout started'
