@@ -9,11 +9,23 @@ pipeline{
     
     stages{
         
+        stage('clean workspace'){
+            steps{
+                cleanWs()
+                echo 'workspace cleaned'
+                sh "whoami"
+                sh 'docker --version'
+                sh 'mvn --version'
+                sh 'java -version'
+                sh 'git --version'
+            }
+        }
+        
         stage('checkout'){
             steps{
                 echo 'checkout started'
                 sh "whoami"
-                sh 'rm -rf spring-boot-app/target'
+                //sh 'rm -rf spring-boot-app/target'
                 git url: "https://github.com/ShubhamMestry24/basic-ci-cd.git", branch: "master"
                 echo 'checkout passed'
             }
