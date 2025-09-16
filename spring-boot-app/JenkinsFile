@@ -3,7 +3,7 @@ pipeline{
     agent {
         docker{
             image 'abhishekf5/maven-abhishek-docker-agent:v1'
-            args '-u 1000:1000 -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
+            args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
         }
     }
     
@@ -13,6 +13,12 @@ pipeline{
 
     stages{
 
+        stage('Clean Targets'){
+            steps{
+                sh 'rm -rf spring-boot-app/target'
+            }
+
+        }
         /*stage('fix permission'){
             steps{
                 sh 'sudo chown -R jenkins:jenkins $WORKSPACE'
