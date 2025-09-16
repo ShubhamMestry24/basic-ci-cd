@@ -12,6 +12,8 @@ pipeline{
         stage('checkout'){
             steps{
                 echo 'checkout started'
+                sh "whoami"
+                sh 'rm -rf spring-boot-app/target'
                 git url: "https://github.com/ShubhamMestry24/basic-ci-cd.git", branch: "master"
                 echo 'checkout passed'
             }
