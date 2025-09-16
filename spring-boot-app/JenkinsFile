@@ -80,9 +80,13 @@ pipeline{
                         git config user.email "iamshubhammestry24@gmail.com"
                         git config user.name "ShubhamMestry24"
                         BUILD_NUMBER=${BUILD_NUMBER}
+                        echo "Current build number: ${BUILD_NUMBER}"
 
                         # Replace image tag in deployment YAML
                         sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" spring-boot-app-manifests/deployment.yml
+
+                        # Verify sed worked
+                        cat spring-boot-app-manifests/deployment.yml
 
                         # Stage only the YAML
                         git add spring-boot-app-manifests/deployment.yml
